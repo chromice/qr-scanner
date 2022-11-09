@@ -71,6 +71,7 @@ declare class QrScanner {
     private _onPlay;
     private _onLoadedMetaData;
     private _onVisibilityChange;
+    private _onWindowResize;
     private _calculateScanRegion;
     private _updateOverlay;
     private static _convertPoints;
