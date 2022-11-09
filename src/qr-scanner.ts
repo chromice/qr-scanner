@@ -164,6 +164,7 @@ class QrScanner {
         this._onLoadedMetaData = this._onLoadedMetaData.bind(this);
         this._onVisibilityChange = this._onVisibilityChange.bind(this);
         this._updateOverlay = this._updateOverlay.bind(this);
+        this._onWindowResize = this._onWindowResize.bind(this);
 
         // @ts-ignore
         video.disablePictureInPicture = true;
