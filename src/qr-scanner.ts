@@ -164,7 +164,7 @@ class QrScanner {
         this._onLoadedMetaData = this._onLoadedMetaData.bind(this);
         this._onVisibilityChange = this._onVisibilityChange.bind(this);
         this._updateOverlay = this._updateOverlay.bind(this);
-        this._onWindowResize = this._onWindowResize.bind(this);
+        this._onResize = this._onResize.bind(this);
 
         // @ts-ignore
         video.disablePictureInPicture = true;
@@ -262,7 +262,7 @@ class QrScanner {
         video.addEventListener('play', this._onPlay);
         video.addEventListener('loadedmetadata', this._onLoadedMetaData);
         document.addEventListener('visibilitychange', this._onVisibilityChange);
-        window.addEventListener('resize', this._onWindowResize);
+        video.addEventListener('resize', this._onResize);
 
         this._qrEnginePromise = QrScanner.createQrEngine();
     }
@@ -331,7 +331,7 @@ class QrScanner {
         this.$video.removeEventListener('loadedmetadata', this._onLoadedMetaData);
         this.$video.removeEventListener('play', this._onPlay);
         document.removeEventListener('visibilitychange', this._onVisibilityChange);
-        window.removeEventListener('resize', this._onWindowResize);
+        this.$video.removeEventListener('resize', this._onResize);
 
         this._destroyed = true;
         this._flashOn = false;
@@ -657,7 +657,7 @@ class QrScanner {
         }
     }
 
-    private _onWindowResize(): void {
+    private _onResize(): void {
         this._scanRegion = this._calculateScanRegion(this.$video);
         this._updateOverlay()
     }
