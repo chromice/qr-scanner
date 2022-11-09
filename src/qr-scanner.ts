@@ -262,6 +262,7 @@ class QrScanner {
         video.addEventListener('play', this._onPlay);
         video.addEventListener('loadedmetadata', this._onLoadedMetaData);
         document.addEventListener('visibilitychange', this._onVisibilityChange);
+        window.addEventListener('resize', this._updateOverlay);
         video.addEventListener('resize', this._onResize);
 
         this._qrEnginePromise = QrScanner.createQrEngine();
@@ -331,6 +332,7 @@ class QrScanner {
         this.$video.removeEventListener('loadedmetadata', this._onLoadedMetaData);
         this.$video.removeEventListener('play', this._onPlay);
         document.removeEventListener('visibilitychange', this._onVisibilityChange);
+        window.removeEventListener('resize', this._updateOverlay);
         this.$video.removeEventListener('resize', this._onResize);
 
         this._destroyed = true;
